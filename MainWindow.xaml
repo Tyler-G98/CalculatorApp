@@ -21,6 +21,7 @@
         <!--#endregion-->
 
         <!--#region Buttons-->
+        
         <Border Grid.Row="1" BorderThickness="10" BorderBrush="Black" Background="Gray">
             <Grid Margin="5">
                 <Grid.RowDefinitions>

@@ -39,24 +39,24 @@ namespace Calculator
                 IsDefault = false;
                 txtScreen.Opacity = 1;
                 txtScreen.Text = "";
-                IntegerInput(sender);
+                IntegerInput(sender as Button);
             }
             else
             {
-                IntegerInput(sender);
+                IntegerInput(sender as Button);
             }
         }
 
-        private void IntegerInput(object sender)
+        private void IntegerInput(Button button)
         {
-            if(txtScreen.Text.Length < 8 && (sender as Button).Content.ToString() != "00")
+            if (txtScreen.Text.Length < 8 && button.Content.ToString() != "00")
             {
-                EquationText = (sender as Button).Content.ToString();
+                EquationText = button.Content.ToString();
                 txtScreen.Text += EquationText;
             }
-            else if(txtScreen.Text.Length < 7 && (sender as Button).Content.ToString() == "00")
+            else if (txtScreen.Text.Length < 7 && button.Content.ToString() == "00")
             {
-                EquationText = (sender as Button).Content.ToString();
+                EquationText = button.Content.ToString();
                 txtScreen.Text += EquationText;
             }
         }
@@ -71,19 +71,17 @@ namespace Calculator
 
         private void click_Operator(object sender, RoutedEventArgs e)
         {
-            if(IsOperatorUsed && (sender as Button).Name != "btnEquals")
+            if (IsOperatorUsed && (sender as Button).Name != "btnEquals")
             {
-                DataTable dataTable = new DataTable();
-                double answer = Convert.ToDouble(dataTable.Compute(txtScreen.Text, ""));
+                CalculateResult();
                 Operator = (sender as Button).Content.ToString();
-                txtScreen.Text = answer.ToString() + Operator;
+                txtScreen.Text = txtScreen.Text + Operator;
             }
-            else if((sender as Button).Name == "btnEquals") 
+            else if ((sender as Button).Name == "btnEquals")
             {
-                DataTable dataTable = new DataTable();
-                double answer = Convert.ToDouble(dataTable.Compute(txtScreen.Text, ""));
+                CalculateResult();
                 Operator = (sender as Button).Content.ToString();
-                txtScreen.Text = answer.ToString();
+                txtScreen.Text = txtScreen.Text;
             }
             else
             {
@@ -93,11 +91,17 @@ namespace Calculator
             }
         }
 
-        private void btnSquare_Click(object sender, RoutedEventArgs e)
+        private void CalculateResult()
         {
             DataTable dataTable = new DataTable();
             double answer = Convert.ToDouble(dataTable.Compute(txtScreen.Text, ""));
-            answer = answer * answer;
+            txtScreen.Text = answer.ToString();
+        }
+
+        private void btnSquare_Click(object sender, RoutedEventArgs e)
+        {
+            CalculateResult();
+            double answer = Math.Pow(Convert.ToDouble(txtScreen.Text), 2);
             Operator = (sender as Button).Content.ToString();
             txtScreen.Text = answer.ToString();
         }
