@@ -5,8 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="300">
+    <Grid ShowGridLines="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.75*"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" BorderThickness="10" BorderBrush="DarkGreen" Background="Aquamarine">
+            <TextBlock x:Name="txtScreen"
+                            Text="00000000" TextAlignment="Right" VerticalAlignment="Bottom" 
+                            FontSize="60" Foreground="Black" FontFamily="Tahoma" Opacity="0.5"/>
+        </Border>
     </Grid>
 </Window>
