@@ -29,16 +29,29 @@ namespace Calculator
         private static string DefaultText = "00000000";
         private static bool IsDefault = true;
 
-        private void click_Equation(object sender, RoutedEventArgs e)
+        private void click_Integer_Input(object sender, RoutedEventArgs e)
         {
             if (IsDefault)
             {
                 IsDefault = false;
                 txtScreen.Opacity = 1;
-                EquationText = (sender as Button).Content.ToString();
-                txtScreen.Text = EquationText;
+                txtScreen.Text = "";
+                IntegerInput(sender);
             }
             else
+            {
+                IntegerInput(sender);
+            }
+        }
+
+        private void IntegerInput(object sender)
+        {
+            if(txtScreen.Text.Length < 8 && (sender as Button).Content.ToString() != "00")
+            {
+                EquationText = (sender as Button).Content.ToString();
+                txtScreen.Text += EquationText;
+            }
+            else if(txtScreen.Text.Length < 7 && (sender as Button).Content.ToString() == "00")
             {
                 EquationText = (sender as Button).Content.ToString();
                 txtScreen.Text += EquationText;
