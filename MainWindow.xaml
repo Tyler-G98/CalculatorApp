@@ -86,8 +86,8 @@
                             Content="-" Foreground="Black" FontSize="50"
                             Click="click_Operator"/>
                 <Button x:Name="btnSquare" Grid.Column="4" Grid.Row="2"
-                            Content="^" Foreground="Black" FontSize="50"
-                            Click="click_Operator"/>
+                            Content="^2" Foreground="Black" FontSize="40"
+                            Click="btnSquare_Click"/>
                 <Button x:Name="btnMultiply" Grid.Column="3" Grid.Row="1"
                             Content="*" Foreground="Black" FontSize="50"
                             Click="click_Operator"/>

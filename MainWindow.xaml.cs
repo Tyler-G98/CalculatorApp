@@ -92,5 +92,14 @@ namespace Calculator
                 txtScreen.Text += Operator;
             }
         }
+
+        private void btnSquare_Click(object sender, RoutedEventArgs e)
+        {
+            DataTable dataTable = new DataTable();
+            double answer = Convert.ToDouble(dataTable.Compute(txtScreen.Text, ""));
+            answer = answer * answer;
+            Operator = (sender as Button).Content.ToString();
+            txtScreen.Text = answer.ToString();
+        }
     }
 }
