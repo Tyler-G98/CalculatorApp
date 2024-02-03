@@ -31,6 +31,7 @@ namespace Calculator
         private static string DefaultText = "00000000";
         private static bool IsDefault = true;
         private static bool IsOperatorUsed = false;
+        private static bool IsOverflow = false;
 
         private void click_Integer_Input(object sender, RoutedEventArgs e)
         {
@@ -49,6 +50,11 @@ namespace Calculator
 
         private void IntegerInput(Button button)
         {
+            if(IsOverflow)
+            {
+                IsOverflow = false;
+                txtScreen.Text = "";
+            }
             if (txtScreen.Text.Length < 8 && button.Content.ToString() != "00")
             {
                 EquationText = button.Content.ToString();
@@ -95,15 +101,31 @@ namespace Calculator
         {
             DataTable dataTable = new DataTable();
             double answer = Convert.ToDouble(dataTable.Compute(txtScreen.Text, ""));
-            txtScreen.Text = answer.ToString();
+            if (answer.ToString().Length > 6)
+            {
+                answer = 0;
+                txtScreen.Text = "Overflow";
+                IsOverflow = true;
+            }
+            else
+            {
+                txtScreen.Text = answer.ToString();
+            }
         }
 
         private void btnSquare_Click(object sender, RoutedEventArgs e)
         {
             CalculateResult();
             double answer = Math.Pow(Convert.ToDouble(txtScreen.Text), 2);
-            Operator = (sender as Button).Content.ToString();
-            txtScreen.Text = answer.ToString();
+            if(answer.ToString().Length > 8)
+            {
+                answer = 0;
+                txtScreen.Text = "Overflow";
+            }
+            else
+            {
+                txtScreen.Text = answer.ToString();
+            }
         }
     }
 }
