@@ -23,7 +23,33 @@ namespace Calculator
         public MainWindow()
         {
             InitializeComponent();
-           
+        }
+
+        private static string EquationText = "";
+        private static string DefaultText = "00000000";
+        private static bool IsDefault = true;
+
+        private void click_Equation(object sender, RoutedEventArgs e)
+        {
+            if (IsDefault)
+            {
+                IsDefault = false;
+                txtScreen.Opacity = 1;
+                EquationText = (sender as Button).Content.ToString();
+                txtScreen.Text = EquationText;
+            }
+            else
+            {
+                EquationText = (sender as Button).Content.ToString();
+                txtScreen.Text += EquationText;
+            }
+        }
+
+        private void btnClear_Click(object sender, RoutedEventArgs e)
+        {
+            txtScreen.Opacity = 0.5;
+            IsDefault = true;
+            txtScreen.Text = DefaultText;
         }
     }
 }
