@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,8 +27,10 @@ namespace Calculator
         }
 
         private static string EquationText = "";
+        private static string Operator = "";
         private static string DefaultText = "00000000";
         private static bool IsDefault = true;
+        private static bool IsOperatorUsed = false;
 
         private void click_Integer_Input(object sender, RoutedEventArgs e)
         {
@@ -63,6 +66,31 @@ namespace Calculator
             txtScreen.Opacity = 0.5;
             IsDefault = true;
             txtScreen.Text = DefaultText;
+            IsOperatorUsed = false;
+        }
+
+        private void click_Operator(object sender, RoutedEventArgs e)
+        {
+            if(IsOperatorUsed && (sender as Button).Name != "btnEquals")
+            {
+                DataTable dataTable = new DataTable();
+                double answer = Convert.ToDouble(dataTable.Compute(txtScreen.Text, ""));
+                Operator = (sender as Button).Content.ToString();
+                txtScreen.Text = answer.ToString() + Operator;
+            }
+            else if((sender as Button).Name == "btnEquals") 
+            {
+                DataTable dataTable = new DataTable();
+                double answer = Convert.ToDouble(dataTable.Compute(txtScreen.Text, ""));
+                Operator = (sender as Button).Content.ToString();
+                txtScreen.Text = answer.ToString();
+            }
+            else
+            {
+                IsOperatorUsed = true;
+                Operator = (sender as Button).Content.ToString();
+                txtScreen.Text += Operator;
+            }
         }
     }
 }

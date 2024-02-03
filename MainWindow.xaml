@@ -77,19 +77,26 @@
                 
                 <!--#region Operator Buttons-->
                 <Button x:Name="btnAddition" Grid.Column="3" Grid.Row="3"
-                            Content="+" Foreground="Black" FontSize="50"/>
+                            Content="+" Foreground="Black" FontSize="50"
+                            Click="click_Operator"/>
                 <Button x:Name="btnEquals" Grid.Column="4" Grid.Row="3"
-                            Content="=" Foreground="Black" FontSize="50"/>
+                            Content="=" Foreground="Black" FontSize="50"
+                            Click="click_Operator"/>
                 <Button x:Name="btnSubtract" Grid.Column="3" Grid.Row="2"
-                            Content="-" Foreground="Black" FontSize="50"/>
+                            Content="-" Foreground="Black" FontSize="50"
+                            Click="click_Operator"/>
                 <Button x:Name="btnSquare" Grid.Column="4" Grid.Row="2"
-                            Content="^" Foreground="Black" FontSize="50"/>
+                            Content="^" Foreground="Black" FontSize="50"
+                            Click="click_Operator"/>
                 <Button x:Name="btnMultiply" Grid.Column="3" Grid.Row="1"
-                            Content="*" Foreground="Black" FontSize="50"/>
+                            Content="*" Foreground="Black" FontSize="50"
+                            Click="click_Operator"/>
                 <Button x:Name="btnModulus" Grid.Column="4" Grid.Row="1"
-                            Content="%" Foreground="Black" FontSize="50"/>
+                            Content="%" Foreground="Black" FontSize="50"
+                            Click="click_Operator"/>
                 <Button x:Name="btnDivide" Grid.Column="3" Grid.Row="0"
-                            Content="/" Foreground="Black" FontSize="50"/>
+                            Content="/" Foreground="Black" FontSize="50"
+                            Click="click_Operator"/>
                 <Button x:Name="btnClear" Grid.Column="4" Grid.Row="0"
                             Content="CLR" Foreground="Black" FontSize="25"
                             Click="btnClear_Click"/>
