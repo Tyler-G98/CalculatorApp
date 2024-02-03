@@ -64,6 +64,25 @@
                             Content="9" Foreground="Black" FontSize="50"/>
                 <!--#endregion-->
                 
+                <!--#region Operator Buttons-->
+                <Button x:Name="btnAddition" Grid.Column="3" Grid.Row="3"
+                            Content="+" Foreground="Black" FontSize="50"/>
+                <Button x:Name="btnEquals" Grid.Column="4" Grid.Row="3"
+                            Content="=" Foreground="Black" FontSize="50"/>
+                <Button x:Name="btnSubtract" Grid.Column="3" Grid.Row="2"
+                            Content="-" Foreground="Black" FontSize="50"/>
+                <Button x:Name="btnSquare" Grid.Column="4" Grid.Row="2"
+                            Content="^" Foreground="Black" FontSize="50"/>
+                <Button x:Name="btnMultiply" Grid.Column="3" Grid.Row="1"
+                            Content="*" Foreground="Black" FontSize="50"/>
+                <Button x:Name="btnModulus" Grid.Column="4" Grid.Row="1"
+                            Content="%" Foreground="Black" FontSize="50"/>
+                <Button x:Name="btnDivide" Grid.Column="3" Grid.Row="0"
+                            Content="/" Foreground="Black" FontSize="50"/>
+                <Button x:Name="btnClear" Grid.Column="4" Grid.Row="0"
+                            Content="CLR" Foreground="Black" FontSize="25"/>
+                <!--#endregion-->
+                
             </Grid>
         </Border>
         <!--#endregion-->
